@@ -1,0 +1,70 @@
+<div class="login-page">
+  <!-- Esquerda: Texto de boas-vindas -->
+  <div class="welcome-section">
+    <h1>Welcome</h1>
+  </div>
+
+  <!-- Direita: Formulário de Login -->
+  <div class="login-form-section">
+    <h2>Sign Up</h2>
+    <p>Create your account</p>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="username@gmail.com"
+          required
+        />
+        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+          <small class="error">Please enter a valid email.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="username"
+          id="username"
+          formControlName="username"
+          placeholder="Mario"
+          required
+        />
+        <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+          <small class="error">Please enter a valid username.</small>
+        </div>
+      </div>
+
+      <!-- Campo de Senha -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="********" required />
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          <small class="error">Password must be at least 6 characters.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="confirmPassword" id="confirmPassword" formControlName="confirmPassword" placeholder="********" required />
+        <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched">
+          <small class="error">Password must be at least 6 characters.</small>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="isLoading || signupForm.invalid">
+        <span *ngIf="!isLoading">Create</span>
+        <span *ngIf="isLoading" class="spinner">Loading</span>
+      </button>
+    </form>
+
+    <p class="signup-link">
+      Already have an account? <a [routerLink]="'/login'">SignIn</a>
+    </p>
+  </div>
+</div>

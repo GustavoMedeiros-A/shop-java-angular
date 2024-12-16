@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Garante que não haverá rolagem desnecessária */
+}
+
+body {
+  font-family: 'Arial', sans-serif; /* Define uma fonte padrão */
+}
+
+body.preload {
+  visibility: hidden;
+  opacity: 0;
+}
+
+body.loaded {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}

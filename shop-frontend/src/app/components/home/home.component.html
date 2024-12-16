@@ -1,0 +1,32 @@
+<div class="home-container">
+  <div class="sidebar">
+    <h2>Welcome Back!</h2>
+    <p>Manage your users easily here.</p>
+  </div>
+  <div class="content">
+    <h1>Registered Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>CreatedAt</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.createdAt }}</td>
+          <td>
+            <button class="action-button edit">Edit</button>
+            <button class="action-button delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
